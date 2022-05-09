@@ -72,7 +72,7 @@ def get_weather_details(request):
     page = int(request.GET.get('page'))-1
     
     res = []
-    redis_client = redis.Redis(host='localhost', port=6379, db=0)
+    redis_client = redis.Redis(host='redis-14419.c212.ap-south-1-1.ec2.cloud.redislabs.com', port=14419, password='RH4JPdiE5kBlwMY0WfIcgoHOW38wcFf2')
     cities = []
     for key in redis_client.scan_iter():
         cities.append(key)
@@ -83,7 +83,7 @@ def get_weather_details(request):
 
 class WeatherRequest(Thread):
     def run(self):
-        redis_client = redis.Redis(host='localhost', port=6379, db=0)
+        redis_client = redis.Redis(host='redis-14419.c212.ap-south-1-1.ec2.cloud.redislabs.com', port=14419, password='RH4JPdiE5kBlwMY0WfIcgoHOW38wcFf2')
         URL = "https://api.openweathermap.org/data/2.5/weather"
         PARAMS = {'appid':'432a2784d5ffb660d8a21fc122b8eed8'}
         while(True):
